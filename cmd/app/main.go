@@ -1,14 +1,20 @@
 package main
 
 import (
-	"fmt"
+	"log"
 	"net/http"
 )
 
-func main() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Hello, you've requested: %s\n", r.URL.Path)
-	})
+func startServer(port string) {
+	log.Printf("Server starting on http://localhost%s\n", port)
 
-	http.ListenAndServe(":80", nil)
+	err := http.ListenAndServe(port, nil)
+	if err != nil {
+		log.Fatalf("Server failed to start: %v", err)
+	}
+}
+
+func main() {
+	port := ":8080"
+	startServer(port)
 }

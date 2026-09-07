@@ -15,7 +15,7 @@ templ:
 
 # Build Tailwind CSS (one-off)
 tailwind:
-	npx @tailwindcss/cli -i $(CSS_INPUT) -o $(CSS_OUTPUT)
+	tailwindcss -i $(CSS_INPUT) -o $(CSS_OUTPUT)
 
 # Build the complete application for production
 build: templ tailwind
@@ -35,7 +35,7 @@ dev:
 
 # Watch for Tailwind changes and rebuild CSS
 watch-tailwind:
-	npx @tailwindcss/cli -i $(CSS_INPUT) -o $(CSS_OUTPUT) --watch
+	tailwindcss -i $(CSS_INPUT) -o $(CSS_OUTPUT) --watch
 
 # Run Air for Go and Templ live reloading
 watch-air:
